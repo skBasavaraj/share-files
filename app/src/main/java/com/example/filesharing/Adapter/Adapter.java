@@ -37,7 +37,7 @@ public class Adapter extends AbstractItem<Adapter,Adapter.ViewHolder> {
     }
 
     @NonNull
-    @Override
+    @Override 
 
     public ViewHolder getViewHolder(View v) {
 
