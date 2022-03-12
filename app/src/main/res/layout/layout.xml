@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="6dp"
+        app:cardElevation="5dp"
+         android:layout_height="130dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+     >
+
+        <ImageView
+            android:id="@+id/audioPic"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            app:layout_constraintDimensionRatio="1:1"
+            />
+        <TextView
+            android:id="@+id/audioName"
+            android:layout_width="140dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="5dp"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="106dp"
+            android:text="abcde"
+            android:ellipsize="marquee"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

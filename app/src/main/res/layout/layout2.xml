@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="15dp"
+         android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.xiaochen.progressroundbutton.AnimDownloadProgressButton
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:textSize="25dp"
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            app:progressbtn_radius="28.00000"
+            android:layout_height="match_parent"
+            app:progressbtn_backgroud_color="#6EE473"
+            app:progressbtn_backgroud_second_color="#DC93EF"
+            />
+        <LinearLayout
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+             android:layout_height="match_parent">
+
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="60dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/pic"
+                android:layout_height="60dp"/>
+
+            <LinearLayout
+                android:layout_marginRight="80dp"
+                android:orientation="vertical"
+                android:layout_width="255dp"
+                 android:layout_height="wrap_content"
+                >
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Subhead"
+                     android:text="File Name "
+                    android:id="@+id/file_title"
+                    android:ellipsize="marquee"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:layout_width="255dp"
+                    android:layout_height="30dp"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+    <ImageView
+        android:id="@+id/Xmark"
+        android:layout_width="30dp"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="10dp"
+         android:layout_height="30dp"/>
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_marginLeft="3dp"
+        android:layout_gravity="end"
+        android:id="@+id/card"
+        android:layout_height="60dp">
+    <ImageView
+        android:id="@+id/Remove"
+        android:layout_width="30dp"
+         android:src="@drawable/ic_close"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="15dp"
+         android:layout_height="30dp"/>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
