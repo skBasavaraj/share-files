@@ -78,13 +78,6 @@ public class MainActivity extends AppCompatActivity {
         sendActity();
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         mManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
-       // mChanel = mManager.initialize(this, getMainLooper(), null);
-//        mReceiver = new WIFIDirectBroadcastReceiver(mManager, mChanel, this);
-//        mIntentFilter = new IntentFilter();
-//        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
-//        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);
-//        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION);
-//        mIntentFilter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
 
         builder = new AlertDialog.Builder(this);
 
@@ -148,42 +141,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ViewPagers.class);
             startActivity(intent);
 
-
-          /*  Intent intent = new Intent(this, DiscoverList.class);
+            /*Intent intent = new Intent(this, DiscoverList.class);
             startActivity(intent);*/
         }
 
 
      }
 
-    /* public void peerList(){
-        peerListListener=new WifiP2pManager.PeerListListener() {
-            @Override
-            public void onPeersAvailable(WifiP2pDeviceList wifiP2pDeviceList) {
-                if(!wifiP2pDeviceList.getDeviceList().equals(peers)){
-                    peers.clear();
-                    peers.addAll(wifiP2pDeviceList.getDeviceList());
-                    deviceNameArray=new String[wifiP2pDeviceList.getDeviceList().size()];
-                    deviceArray=new WifiP2pDevice[wifiP2pDeviceList.getDeviceList().size()];
-                    int index=0;
-                    for(WifiP2pDevice device:wifiP2pDeviceList.getDeviceList()){
-                        deviceNameArray[index]=device.deviceName;
-                        deviceArray[index]=device;
-                        index++;
-                     }
 
-                     Log.e("Device","Device"+ Arrays.toString(deviceNameArray));
-            discoverList.pass(deviceNameArray);
-                }
-                if(peers.size()==0){
-                    Toast.makeText(getApplicationContext(),"No Device Found",Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-
-        };
-     }*/
 
 
 

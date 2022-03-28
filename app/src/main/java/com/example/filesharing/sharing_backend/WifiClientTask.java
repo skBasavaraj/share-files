@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
+import com.example.filesharing.Activity.sendScreen;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -62,18 +64,20 @@ public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
         }
         if (!dir.exists())
         {
-            // Make it, if it doesn't exit
-            boolean success = dir.mkdirs();
+             boolean success = dir.mkdirs();
             if (!success)
             {
                 dir = null;
             }
         }
+        String str=fileUri.toString();
+        int index=str.lastIndexOf('/');
+        String last=str.substring(index+1);
 
         String outputFilePath = dir.getAbsolutePath() +
-                File.separatorChar + new Random().nextInt(10000) +
-                new Random().nextInt(10000) + ".mp4";
-        File outputFile = new File(outputFilePath);
+                File.separatorChar +  last;
+        Log.e("FORMATE","FORMAT"+dir.getAbsolutePath());
+         File outputFile = new File(outputFilePath);
         if (!outputFile.exists()) {
             outputFile.getParentFile().mkdirs();
             outputFile.createNewFile();
@@ -88,7 +92,7 @@ public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
         Socket socket = null;
         OutputStream outputStream = null;
         ObjectOutputStream objectOutputStream = null;
-        InputStream inputStream = null;
+         InputStream inputStream = null;
         try {
             String hostAddress = params[0].toString();
             Uri imageUri = Uri.parse(params[1].toString());
@@ -115,21 +119,21 @@ public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
             inputStream = new FileInputStream(outputFile);
             long fileSize = fileTransfer.getFileLength();
             long total = 0;
-            byte[] buf = new byte[1024];
+            byte[] buf = new byte[102400];
             int len;
             while ((len = inputStream.read(buf)) != -1) {
                 outputStream.write(buf, 0, len);
                 total += len;
                 int progress = (int) ((total * 100) / fileSize);
                 publishProgress(progress);
-                Log.e(TAG, "file sending progress：" + progress);
+              Log.e(TAG, "file sending progress：" + progress);
             }
             socket.close();
             inputStream.close();
             outputStream.close();
             objectOutputStream.close();
             socket = null;
-            inputStream = null;
+            inputStream = null ;
             outputStream = null;
             objectOutputStream = null;
             Log.e(TAG, "File sent successfully");
@@ -176,7 +180,7 @@ public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
             if (inputStream == null) {
                 throw new NullPointerException("InputStream for given input Uri is null");
             }
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[102400];
             int length;
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);

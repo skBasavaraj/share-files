@@ -58,6 +58,8 @@ public class Adapter extends AbstractItem<Adapter,Adapter.ViewHolder> {
     @Override
     public void bindView(ViewHolder holder, List<Object> payloads) {
         super.bindView(holder, payloads);
+      ///storage/emulated/0/DCIM/Camera/VID_20220305_151741.mp4
+       // Log.e("uri","uri"+itemsList.getPath());
 
         Context context = holder.itemView.getContext();
          holder.name.setText(itemsList.getName());
@@ -68,7 +70,6 @@ public class Adapter extends AbstractItem<Adapter,Adapter.ViewHolder> {
 
          String path = String.valueOf(itemsList.getName());
          String match = itemsList.getDate();
-
 
          if (match.equals("video/mp4")) {
              Glide.with(holder.Apic).load(itemsList.getUri()).placeholder(R.drawable.ic_baseline_movie_24).thumbnail(0.33f)

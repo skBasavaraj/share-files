@@ -1,18 +1,20 @@
 package com.example.filesharing.Model;
 
+import android.net.Uri;
+
 import java.util.List;
 
 public class  ItemList {
     public String name;
-    public String path;
-     public long size;
+      public long size;
+     public String Path;
  // public  String progress;
  public   List<ItemList> list;
-    public ItemList(String name, String path, long size
+    public ItemList(String name, long size,String uri
     ) {
         this.name = name;
-        this.path = path;
-        this.size = size;
+         this.size = size;
+        this.Path=uri;
        // this.progress=progress;
      }
 
@@ -24,14 +26,13 @@ public class  ItemList {
         return name;
     }
 
-    public String getPath() {
-        return path;
-    }
-
     public long getSize() {
         return size;
     }
 
+    public String getPath() {
+        return Path;
+    }
 //    public String getProgress() {
 //        return progress;
 //    }

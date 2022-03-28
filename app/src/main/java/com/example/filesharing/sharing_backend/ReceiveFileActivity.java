@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
 
+import com.example.filesharing.Activity.DirectBroadcastReceiver;
 import com.example.filesharing.R;
 
 import java.io.File;
@@ -143,7 +144,7 @@ public class ReceiveFileActivity extends BaseActivity {
 
     private void initView() {
         setTitle("Receive files");
-        iv_image = findViewById(R.id.iv_image);
+        //iv_image = findViewById(R.id.iv_image);
         tv_log = findViewById(R.id.tv_log);
         findViewById(R.id.btnCreateGroup).setOnClickListener(v -> {
             if (ActivityCompat.checkSelfPermission(ReceiveFileActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

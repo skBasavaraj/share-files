@@ -42,21 +42,14 @@ public class ViewPagers extends AppCompatActivity   {
         setContentView(R.layout.activity_send_items_activty);
         viewPager = findViewById(R.id.viewpager);
          fab1=findViewById(R.id.floatingActionButton);
-         /*fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
 
-              openDialog(view);
-             }
-        });*/
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sendScreen.list.isEmpty()) {
+                if (DiscoverList.list.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please Select Some Items", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(ViewPagers.this, sendScreen.class);
+                    Intent intent = new Intent(ViewPagers.this, DiscoverList.class);
                     startActivity(intent);
                 }
             }

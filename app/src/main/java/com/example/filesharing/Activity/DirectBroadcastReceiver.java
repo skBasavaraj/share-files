@@ -1,4 +1,4 @@
-package com.example.filesharing.sharing_backend;
+package com.example.filesharing.Activity;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -13,6 +13,8 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
+
+import com.example.filesharing.sharing_backend.DirectActionListener;
 
 import java.util.ArrayList;
 import java.util.List;

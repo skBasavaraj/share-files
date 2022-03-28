@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
+import com.example.filesharing.Activity.DiscoverList;
 import com.example.filesharing.Activity.sendScreen;
 import com.example.filesharing.Adapter.Adapter;
 import com.example.filesharing.Model.ItemList;
@@ -79,7 +80,7 @@ import java.util.List;
                 @Override
                 public void onSelectionChanged(Adapter item, boolean selected) {
 
-                    sendScreen.PasItem(getSelectedItems());
+                    DiscoverList.PasItem(getSelectedItems());
 
                 }
             });
@@ -161,8 +162,7 @@ import java.util.List;
                         String name=item.itemsList.getName();
                         String path=item.itemsList.getPath();
                         long size=item.itemsList.getSize();
-
-                        items.add(new ItemList(name,path,size));
+                        items.add(new ItemList(name,size,path));
 
                     }
                     return false;

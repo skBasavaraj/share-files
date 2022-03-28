@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.filesharing.Activity.DiscoverList;
 import com.example.filesharing.Activity.sendScreen;
 import com.example.filesharing.Adapter.Adapter;
 import com.example.filesharing.Model.ItemList;
@@ -74,7 +75,7 @@ public class DocFragment extends Fragment {
             @Override
             public void onSelectionChanged(Adapter item, boolean selected) {
 
-                sendScreen.PasItem(getSelectedItems());
+                DiscoverList.PasItem(getSelectedItems());
 
             }
         });
@@ -171,8 +172,7 @@ public class DocFragment extends Fragment {
                     String name=item.itemsList.getName();
                     String path=item.itemsList.getPath();
                     long size=item.itemsList.getSize();
-
-                    items.add(new ItemList(name,path,size));
+                    items.add(new ItemList(name,size,path));
 
                 }
                 return false;

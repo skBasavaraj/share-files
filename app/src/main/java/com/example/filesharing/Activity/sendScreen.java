@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.filesharing.Adapter.sendReceive;
-import com.example.filesharing.Model.ItemList;
+import com.example.filesharing.Model.ProgressModel;
 import com.example.filesharing.R;
+import com.example.filesharing.sharing_backend.WifiClientTask;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
@@ -22,11 +25,11 @@ import java.util.List;
 
 public  class sendScreen extends AppCompatActivity {
 
- public static List<ItemList> list=new ArrayList<>();
+ public static List<ProgressModel> list=new ArrayList<>();
  public static sendScreen instance;
     public static FastAdapter<sendReceive>fastAdapter;
     public static ItemAdapter<sendReceive>itemAdapter;
-
+ public DiscoverList discoverList =new DiscoverList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +46,25 @@ public  class sendScreen extends AppCompatActivity {
 
       fastAdapter.withEventHook(new  ClickEvent());
 
-        for(ItemList s:list) {
-            itemAdapter.add(new sendReceive(new ItemList(s.getName(),s.getPath(),s.getSize()),this));
-        }
+        /*for(ProgressModel s:list) {
+            Uri imageUri =Uri.parse(s.getPath() );
+            // Log.e(TAG, "file path：" + imageUri);
+            if (discoverList.wifiP2pInfo != null) {
+                 new WifiClientTask(this).execute(discoverList.wifiP2pInfo.groupOwnerAddress.getHostAddress(), imageUri);
+            }
+            //itemAdapter.add(new sendReceive(new ProgressModel(s.getName(),s.getPath(),s.getSize()),this));
+        }*/
        fastAdapter.notifyAdapterDataSetChanged();
-
+      /*  Uri imageUri =;
+       // Log.e(TAG, "file path：" + imageUri);
+        if (discoverList.wifiP2pInfo != null) {
+            new WifiClientTask(this).execute(discoverList.wifiP2pInfo.groupOwnerAddress.getHostAddress(), imageUri);
+        }*/
 
     }
 
-    public static sendScreen PasItem(List<ItemList> select) {
-          list=select;
+    public static sendScreen PasItem(int select) {
+        itemAdapter.add( new sendReceive(new ProgressModel(select)) );
        return instance;
     }
 

@@ -23,6 +23,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.filesharing.Activity.DirectBroadcastReceiver;
 import com.example.filesharing.R;
 
 import java.util.ArrayList;
@@ -286,8 +287,7 @@ public class SendFileActivity extends BaseActivity {
             loadingDialog.show("Searching for nearby devices", true, false);
             wifiP2pDeviceList.clear();
             deviceAdapter.notifyDataSetChanged();
-            //搜寻附近带有 Wi-Fi P2P 的设备
-            wifiP2pManager.discoverPeers(channel, new WifiP2pManager.ActionListener() {
+             wifiP2pManager.discoverPeers(channel, new WifiP2pManager.ActionListener() {
                 @Override
                 public void onSuccess() {
                     showToast("Success");

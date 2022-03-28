@@ -71,7 +71,7 @@ public class AppFragment extends Fragment {
         fastAdapter.withSelectionListener(new ISelectionListener<AppAdapter>() {
             @Override
             public void onSelectionChanged(AppAdapter item, boolean selected) {
-                sendScreen.PasItem(getSelectedItems());
+               // sendScreen.PasItem(getSelectedItems());
 
             }
         });
@@ -122,7 +122,7 @@ public class AppFragment extends Fragment {
                if (item.isSelected()) {
                    String path= item.app.getApath();
                    String name=item.app.getAname();
-                   items.add(new ItemList(name,path,0));
+                   items.add(new ItemList(name,0,null));
 
                 }
                 return false;

@@ -71,16 +71,14 @@ public class WifiServerService extends IntentService {
                 dir = new File(Environment.getExternalStorageDirectory() + "/ShareFile/receivedItems");
             }
             if (!dir.exists()) {
-                // Make it, if it doesn't exit
-                boolean success = dir.mkdirs();
+                 boolean success = dir.mkdirs();
                 if (!success) {
                     dir = null;
                 }
             }
-            //将文件存储至指定位置
-            file = new File(dir, name);
+             file = new File(dir, name);
             fileOutputStream = new FileOutputStream(file);
-            byte[] buf = new byte[1024];
+            byte[] buf = new byte[102400];
             int len;
             long total = 0;
             int progress;
@@ -109,8 +107,7 @@ public class WifiServerService extends IntentService {
             if (progressChangListener != null) {
                 progressChangListener.onTransferFinished(file);
             }
-            //再次启动服务，等待客户端下次连接
-            startService(new Intent(this, WifiServerService.class));
+             startService(new Intent(this, WifiServerService.class));
         }
     }
 

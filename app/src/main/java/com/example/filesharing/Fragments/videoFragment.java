@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.filesharing.Activity.DiscoverList;
 import com.example.filesharing.Adapter.Adapter;
 import com.example.filesharing.Model.ItemList;
 import com.example.filesharing.Model.ItemsList;
@@ -78,8 +79,7 @@ public class videoFragment extends Fragment {
                 @Override
                 public void onSelectionChanged(Adapter item, boolean selected) {
 
-                    sendScreen.PasItem(getSelectedItems());
-
+                     DiscoverList.PasItem(getSelectedItems());
                 }
             });
 
@@ -144,9 +144,9 @@ public class videoFragment extends Fragment {
             public boolean apply(@NonNull IAdapter<Adapter> lastParentAdapter, int lastParentPosition, Adapter item, int position) {
                 if (item.isSelected()) {
                   String name=item.itemsList.getName();
-                 String path=item.itemsList.getPath();
+                String path=item.itemsList.getPath();
                 long size=item.itemsList.getSize();
-                items.add(new ItemList(name,path,size));
+                items.add(new ItemList(name,size,path));
 
                 }
                 return false;

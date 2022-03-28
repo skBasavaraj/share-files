@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.filesharing.Activity.ReceiveScreen;
 import com.example.filesharing.Activity.sendScreen;
 import com.example.filesharing.Model.ItemList;
+import com.example.filesharing.Model.ProgressModel;
 import com.example.filesharing.R;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.items.AbstractItem;
@@ -28,8 +29,6 @@ import com.xiaochen.progressroundbutton.AnimDownloadProgressButton;
 
 import java.util.List;
 
-import static com.example.filesharing.Activity.ReceiveScreen.rmv;
-import static com.example.filesharing.Activity.sendScreen.Remove;
 
 public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolder> {
 
@@ -37,10 +36,15 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
     public Handler hdlr = new Handler();
     public float i;
     public Context ctx;
+    public ProgressModel progressModel;
      public sendReceive(ItemList itemLists ,Context contxt) {
         this.itemLists =  itemLists;
         this.ctx=contxt;
      }
+
+    public sendReceive(ProgressModel progressModel) {
+         this.progressModel=progressModel;
+    }
 
 
     @NonNull
@@ -62,16 +66,16 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
     @Override
     public void bindView(ViewHolder holder, List<Object> payloads) {
         super.bindView(holder, payloads);
-         holder.file_title.setText(itemLists.getName());
+        // holder.file_title.setText(itemLists.getName());
         holder.mAnimDownloadProgressButton.setTextSize(30f);
-        holder.file_title.setMarqueeRepeatLimit(5);
-        holder.file_title.setSelected(true);
-        holder.file_title.setSingleLine(true);
+//        holder.file_title.setMarqueeRepeatLimit(5);
+//        holder.file_title.setSelected(true);
+//        holder.file_title.setSingleLine(true);
          holder.mAnimDownloadProgressButton.setButtonRadius(0.500f);
         holder.mAnimDownloadProgressButton.postInvalidate();
 
 
-        i = holder.mAnimDownloadProgressButton.getProgress();
+       // i = holder.mAnimDownloadProgressButton.getProgress();
 
         new Thread(new Runnable() {
             public void run() {
@@ -82,9 +86,9 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
                     hdlr.post(new Runnable() {
                         @SuppressLint("SetTextI18n")
                         public void run() {
-                            holder.mAnimDownloadProgressButton.setProgressText( "" , i  );
+                            holder.mAnimDownloadProgressButton.setProgressText( "" , progressModel.getProgress() );
                             holder. mAnimDownloadProgressButton.setState(AnimDownloadProgressButton.DOWNLOADING);
-                            if(i==100){
+                         /*   if(i==100){
                                 holder.mAnimDownloadProgressButton.setState(AnimDownloadProgressButton.INSTALLING);
                                 holder.mAnimDownloadProgressButton.setCurrentText("Completed");
                                 holder.imageView1.setBackgroundResource(R.drawable.ic_chek);
@@ -97,13 +101,13 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
                                 holder.imageView1.setBackgroundResource(R.drawable.ic_chek);
                                 holder.rmv.setVisibility(View.INVISIBLE);
 
-                            }
+                            }*/
 
                         }
                     });
 
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(50);
 
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -116,7 +120,7 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
         ).start();
 
 
-        if (itemLists.getPath().endsWith(".mp4")) {
+        /*if (itemLists.getUriPath().endsWith(".mp4")) {
 
              Glide.with(ctx).load(itemLists.getPath()).placeholder(R.drawable.ic_baseline_movie_24).error(R.drawable.ic_baseline_movie_24).into(holder.imageView);
 
@@ -129,7 +133,7 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
         else if (itemLists .getPath().endsWith(".mp3")) {
             holder.imageView.setImageResource(R.drawable.ic_muisc);
 
-        }
+        }*/
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -141,11 +145,11 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
          cardView=itemView.findViewById(R.id.card);
-            imageView=itemView.findViewById(R.id.pic);
-            imageView1=itemView.findViewById(R.id.Xmark);
+           /* imageView=itemView.findViewById(R.id.pic);
+            imageView1=itemView.findViewById(R.id.Xmark);*/
             mAnimDownloadProgressButton = itemView.findViewById(R.id.btn);
-            file_title=itemView.findViewById(R.id.file_title);
-            rmv=itemView.findViewById(R.id.Remove);
+           /* file_title=itemView.findViewById(R.id.file_title);
+            rmv=itemView.findViewById(R.id.Remove);*/
         }
     }
 
