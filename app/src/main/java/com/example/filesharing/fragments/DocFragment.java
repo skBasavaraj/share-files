@@ -1,4 +1,4 @@
-package com.example.filesharing.Fragments;
+package com.example.filesharing.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
@@ -25,11 +25,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.filesharing.Activity.DiscoverList;
-import com.example.filesharing.Activity.sendScreen;
-import com.example.filesharing.Adapter.Adapter;
-import com.example.filesharing.Model.ItemList;
-import com.example.filesharing.Model.ItemsList;
+import com.example.filesharing.activity.DiscoverList;
+import com.example.filesharing.adapters.Adapter;
+import com.example.filesharing.model.ItemList;
+import com.example.filesharing.model.ItemsList;
 import com.example.filesharing.R;
 import com.example.filesharing.SpacesItemDecoration;
 import com.mikepenz.fastadapter.FastAdapter;

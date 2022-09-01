@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.filesharing.Activity.DiscoverList;
-import com.example.filesharing.Activity.MainActivity;
+import com.example.filesharing.activity.DiscoverList;
+import com.example.filesharing.activity.MainActivity;
 
 public class WIFIDirectBroadcastReceiver extends BroadcastReceiver {
     public WifiP2pManager wifiP2pManager;

@@ -1,5 +1,6 @@
 package com.example.filesharing.sharing_backend;
 
+
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -9,7 +10,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
-import com.example.filesharing.Activity.sendScreen;
+import com.example.filesharing.adapters.listAdapter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,20 +21,15 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.Random;
-
 
 
 public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
 
     private static final String TAG = "WifiClientTask";
-
     private final ProgressDialog progressDialog;
-
-    @SuppressLint("StaticFieldLeak")
+     @SuppressLint("StaticFieldLeak")
     private final Context context;
-
-    public WifiClientTask(Context context) {
+     public WifiClientTask(Context context) {
         this.context = context.getApplicationContext();
         progressDialog = new ProgressDialog(context);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -136,7 +132,8 @@ public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
             inputStream = null ;
             outputStream = null;
             objectOutputStream = null;
-            Log.e(TAG, "File sent successfully");
+             Log.e(TAG, "File sent successfully");
+
             return true;
         } catch (Exception e) {
             Log.e(TAG, "File sending exception Exception: " + e.getMessage());
@@ -185,6 +182,7 @@ public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
+
         }
     }
 
@@ -195,8 +193,10 @@ public class WifiClientTask extends AsyncTask<Object, Integer, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean aBoolean) {
-        progressDialog.cancel();
-        Log.e(TAG, "onPostExecute: " + aBoolean);
+         listAdapter.Icon("check");
+         progressDialog.cancel();
+
+         Log.e(TAG, "onPostExecute: " + aBoolean);
     }
 
 }

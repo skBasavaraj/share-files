@@ -1,4 +1,4 @@
-package com.example.filesharing.Fragments;
+package com.example.filesharing.fragments;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -18,10 +18,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.filesharing.Activity.sendScreen;
-import com.example.filesharing.Adapter.AppAdapter;
-import com.example.filesharing.Model.App;
-import com.example.filesharing.Model.ItemList;
+import com.example.filesharing.adapters.AppAdapter;
+import com.example.filesharing.model.App;
+import com.example.filesharing.model.ItemList;
 import com.example.filesharing.R;
 import com.example.filesharing.SpacesItemDecoration;
 import com.mikepenz.fastadapter.FastAdapter;

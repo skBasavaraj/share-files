@@ -1,4 +1,4 @@
-package com.example.filesharing.Model;
+package com.example.filesharing.model;
 
 import android.graphics.drawable.Drawable;
 

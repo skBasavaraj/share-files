@@ -1,9 +1,8 @@
-package com.example.filesharing.Adapter;
+package com.example.filesharing.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -19,12 +18,11 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.example.filesharing.Model.App;
+import com.example.filesharing.model.App;
 import com.example.filesharing.R;
 import com.mikepenz.fastadapter.commons.utils.FastAdapterUIUtils;
 import com.mikepenz.fastadapter.items.AbstractItem;
 import com.mikepenz.materialize.util.UIUtils;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

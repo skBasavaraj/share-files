@@ -1,4 +1,4 @@
-package com.example.filesharing.Activity;
+package com.example.filesharing.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,19 +7,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 
-import com.example.filesharing.Adapter.CustomAdapter;
-import com.example.filesharing.Adapter.ViewPagerAdapter;
-import com.example.filesharing.Fragments.AppFragment;
-import com.example.filesharing.Fragments.DocFragment;
-import com.example.filesharing.Fragments.ImageFragment;
-import com.example.filesharing.Fragments.audioFragemt;
-import com.example.filesharing.Fragments.videoFragment;
-import com.example.filesharing.Model.ItemList;
+import com.example.filesharing.adapters.ViewPagerAdapter;
+import com.example.filesharing.fragments.AppFragment;
+import com.example.filesharing.fragments.DocFragment;
+import com.example.filesharing.fragments.ImageFragment;
+import com.example.filesharing.fragments.audioFragemt;
+import com.example.filesharing.fragments.videoFragment;
+import com.example.filesharing.model.ItemList;
 import com.example.filesharing.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -34,8 +32,7 @@ public class ViewPagers extends AppCompatActivity   {
     public  ArrayAdapter adapter;
     ListView listView;
      FloatingActionButton  fab1;
-    CustomAdapter customAdapter;
-    public List<ItemList> items = new ArrayList<>();
+     public List<ItemList> items = new ArrayList<>();
          @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,16 +74,7 @@ public class ViewPagers extends AppCompatActivity   {
 
            fab.setVisibility(View.VISIBLE);
    }*/
-    public void openDialog(View v){
-         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        View rowList = getLayoutInflater().inflate(R.layout.layout1, null);
-        listView = rowList.findViewById(R.id.listView);
-         customAdapter = new CustomAdapter(this, items);
-        listView.setAdapter(customAdapter);
-          alertDialog.setView(rowList);
-        AlertDialog dialog = alertDialog.create();
-        dialog.show();
-    }
+
 
 
 }

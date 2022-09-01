@@ -1,11 +1,9 @@
-package com.example.filesharing.Adapter;
+package com.example.filesharing.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
- import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,8 +18,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.example.filesharing.Fragments.ActionModeHelper;
-import com.example.filesharing.Model.ItemsList;
+import com.example.filesharing.model.ItemsList;
 import com.example.filesharing.R;
 import com.mikepenz.fastadapter.commons.utils.FastAdapterUIUtils;
 import com.mikepenz.fastadapter.items.AbstractItem;
@@ -185,8 +182,7 @@ public class Adapter extends AbstractItem<Adapter,Adapter.ViewHolder> {
 
        class ViewHolder extends RecyclerView.ViewHolder {
         public  View v;
-
-         TextView name;
+        TextView name;
         ImageView Apic;
 
         public ViewHolder(View itemView) {

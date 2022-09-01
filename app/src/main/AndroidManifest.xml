@@ -23,11 +23,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FileShare">
-        <activity android:name=".Activity.ReceiveScreen"/>
-        <activity android:name=".Activity.sendScreen" />
-        <activity android:name=".Activity.DiscoverList" />
-        <activity android:name=".Activity.ViewPagers"/>
-        <activity android:name=".Activity.MainActivity"
+        <activity android:name=".activity.ReceiveScreen"/>
+        <activity android:name=".activity.sendScreen" />
+        <activity android:name=".activity.DiscoverList" />
+        <activity android:name=".activity.ViewPagers"/>
+        <activity android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

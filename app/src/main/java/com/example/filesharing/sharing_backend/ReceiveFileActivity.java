@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
 
-import com.example.filesharing.Activity.DirectBroadcastReceiver;
+import com.example.filesharing.activity.DirectBroadcastReceiver;
 import com.example.filesharing.R;
 
 import java.io.File;

@@ -23,7 +23,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.filesharing.Activity.DirectBroadcastReceiver;
+import com.example.filesharing.activity.DirectBroadcastReceiver;
 import com.example.filesharing.R;
 
 import java.util.ArrayList;

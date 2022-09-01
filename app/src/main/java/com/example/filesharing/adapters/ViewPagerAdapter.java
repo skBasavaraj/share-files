@@ -1,4 +1,4 @@
-package com.example.filesharing.Adapter;
+package com.example.filesharing.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

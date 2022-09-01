@@ -1,4 +1,4 @@
- package com.example.filesharing.Fragments;
+ package com.example.filesharing.fragments;
 
  import android.view.Menu;
  import android.view.MenuItem;

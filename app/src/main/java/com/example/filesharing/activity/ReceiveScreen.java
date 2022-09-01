@@ -1,8 +1,5 @@
-package com.example.filesharing.Activity;
+package com.example.filesharing.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,32 +15,25 @@ import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
-import com.example.filesharing.Adapter.sendReceive;
-import com.example.filesharing.Model.ItemList;
+import com.example.filesharing.adapters.listAdapter;
+import com.example.filesharing.model.ListItem;
 import com.example.filesharing.R;
 import com.example.filesharing.sharing_backend.BaseActivity;
 import com.example.filesharing.sharing_backend.DirectActionListener;
 import com.example.filesharing.sharing_backend.FileTransfer;
-import com.example.filesharing.sharing_backend.ReceiveFileActivity;
 import com.example.filesharing.sharing_backend.WifiServerService;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
-import com.mikepenz.fastadapter.listeners.ClickEventHook;
-import com.mikepenz.fastadapter.utils.EventHookUtil;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 
 public class ReceiveScreen extends BaseActivity {
-    private TextView tv_log;
+  //  private TextView tv_log;
 
     private ProgressDialog progressDialog;
 
@@ -56,7 +46,10 @@ public class ReceiveScreen extends BaseActivity {
     private BroadcastReceiver broadcastReceiver;
 
     private WifiServerService wifiServerService;
-
+      public  static FastAdapter<listAdapter> fastAdapter;
+ public static ItemAdapter<listAdapter> itemAdapter;
+    public  RecyclerView  rvList;
+     public static ReceiveScreen instance;
     private final ServiceConnection serviceConnection = new ServiceConnection() {
 
         @Override
@@ -129,10 +122,12 @@ public class ReceiveScreen extends BaseActivity {
             });
         }
 
+        //Environment.getExternalStorageDirectory() + "/ShareFile/receivedItems"
         @Override
         public void onTransferFinished(final File file) {
             runOnUiThread(() -> {
                 progressDialog.cancel();
+
 //                if (file != null && file.exists()) {
 //                    Glide.with(ReceiveFileActivity.this).load(file.getPath()).into(iv_image);
 //                }
@@ -140,10 +135,19 @@ public class ReceiveScreen extends BaseActivity {
         }
     };
 
+    public static ReceiveScreen passName(String fileName) {
+        String path  = Environment.getExternalStorageDirectory() + "/ShareFile/receivedItems/"+fileName;
+        itemAdapter.add(new listAdapter().withadapter(new ListItem(fileName,path)));
+        fastAdapter.notifyAdapterDataSetChanged();
+        return  instance;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_screen);
+        rvList=findViewById(R.id.rv1);
 
         wifiP2pManager = (WifiP2pManager) getSystemService(WIFI_P2P_SERVICE);
         if (wifiP2pManager == null) {
@@ -153,13 +157,25 @@ public class ReceiveScreen extends BaseActivity {
         channel = wifiP2pManager.initialize(this, getMainLooper(), directActionListener);
         broadcastReceiver = new DirectBroadcastReceiver(wifiP2pManager, channel, directActionListener);
         registerReceiver(broadcastReceiver, DirectBroadcastReceiver.getIntentFilter());
+
+
+        rvList.setLayoutManager(new LinearLayoutManager(this) );
+
+        rvList.setHasFixedSize(true);
+
+        itemAdapter = itemAdapter.items();
+
+        itemAdapter = new ItemAdapter();
+        fastAdapter = FastAdapter.with(itemAdapter);
+        rvList.setAdapter(fastAdapter);
+
         initView();
         bindService();
     }
 
     private void initView() {
         setTitle("Receive files");
-          tv_log = findViewById(R.id.log);
+          //tv_log = findViewById(R.id.log);
              if (ActivityCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
@@ -185,6 +201,7 @@ public class ReceiveScreen extends BaseActivity {
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setTitle("receiving file");
         progressDialog.setMax(100);
+
     }
 
     @Override
@@ -218,8 +235,8 @@ public class ReceiveScreen extends BaseActivity {
     }
 
     private void log(String log) {
-        tv_log.append(log + "\n");
-        tv_log.append("----------" + "\n");
+      //  tv_log.append(log + "\n");
+       // tv_log.append("----------" + "\n");
     }
 
     private void bindService() {

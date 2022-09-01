@@ -1,4 +1,4 @@
-package com.example.filesharing.Adapter;
+package com.example.filesharing.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,21 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.example.filesharing.Activity.ReceiveScreen;
-import com.example.filesharing.Activity.sendScreen;
-import com.example.filesharing.Model.ItemList;
-import com.example.filesharing.Model.ProgressModel;
+import com.example.filesharing.model.ItemList;
 import com.example.filesharing.R;
-import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.items.AbstractItem;
-import com.mikepenz.fastadapter.listeners.ClickEventHook;
-import com.mikepenz.fastadapter.utils.EventHookUtil;
-import com.xiaochen.progressroundbutton.AnimButtonLayout;
 import com.xiaochen.progressroundbutton.AnimDownloadProgressButton;
 
 import java.util.List;
@@ -36,15 +26,11 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
     public Handler hdlr = new Handler();
     public float i;
     public Context ctx;
-    public ProgressModel progressModel;
-     public sendReceive(ItemList itemLists ,Context contxt) {
+      public sendReceive(ItemList itemLists ,Context contxt) {
         this.itemLists =  itemLists;
         this.ctx=contxt;
      }
 
-    public sendReceive(ProgressModel progressModel) {
-         this.progressModel=progressModel;
-    }
 
 
     @NonNull
@@ -86,7 +72,7 @@ public class sendReceive extends AbstractItem<sendReceive, sendReceive.ViewHolde
                     hdlr.post(new Runnable() {
                         @SuppressLint("SetTextI18n")
                         public void run() {
-                            holder.mAnimDownloadProgressButton.setProgressText( "" , progressModel.getProgress() );
+                            holder.mAnimDownloadProgressButton.setProgressText( "" , i);
                             holder. mAnimDownloadProgressButton.setState(AnimDownloadProgressButton.DOWNLOADING);
                          /*   if(i==100){
                                 holder.mAnimDownloadProgressButton.setState(AnimDownloadProgressButton.INSTALLING);

@@ -10,6 +10,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.filesharing.activity.ReceiveScreen;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -60,6 +62,7 @@ public class WifiServerService extends IntentService {
             FileTransfer fileTransfer = (FileTransfer) objectInputStream.readObject();
             Log.e(TAG, "documents to be received: " + fileTransfer);
             String name = fileTransfer.getFileName();
+
             File dir = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 if (Environment.isExternalStorageManager()) {
@@ -99,6 +102,8 @@ public class WifiServerService extends IntentService {
             inputStream = null;
             objectInputStream = null;
             fileOutputStream = null;
+            ReceiveScreen.passName(fileTransfer.getFileName());
+
             Log.e(TAG, "The file is received successfully, the MD5 code of the file is：" + Md5Util.getMd5(file));
         } catch (Exception e) {
             Log.e(TAG, "file reception Exception: " + e.getMessage());

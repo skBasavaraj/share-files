@@ -1,4 +1,4 @@
-package com.example.filesharing.Activity;
+package com.example.filesharing.activity;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
